@@ -1,0 +1,14 @@
+Options +FollowSymLinks
+RewriteEngine on
+
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^index/? index.php [NC,L]
+RewriteRule ^admin/index/? admin/index.php [NC,L]
+RewriteRule ^admin/categories/? admin/categories.php [NC,L]
+RewriteRule ^admin/customers/? admin/customers.php [NC,L]
+RewriteRule ^admin/sales/? admin/sales.php [NC,L]
+RewriteRule ^admin/users/? admin/users.php [NC,L]
+
+RewriteRule ^admin/auth/login? admin/auth/login.php [NC,L]

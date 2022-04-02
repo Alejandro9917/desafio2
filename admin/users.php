@@ -1,6 +1,6 @@
 <?php 
     //Vars
-    $title='Productos'; 
+    $title='Usuarios'; 
 ?>
 
 <?php require("resources/templates/header-template.php"); ?>
