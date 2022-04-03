@@ -1,5 +1,5 @@
 <?php
-    class Usuarios extends Validator{
+    class Users extends Validator{
         private $id = null;
         private $user = null;
         private $name = null;
@@ -98,7 +98,7 @@
             $params = array($this->email);
             $data = Database::getRow($sql, $params);
             if($data){
-                $this->id = $data['id_usuario'];
+                $this->id = $data['id'];
                 return true;
             }else{
                 return false;
@@ -165,6 +165,7 @@
             $params = array($this->name,$this->email,$this->user, $this->id);
             return Database::executeRow($sql, $params);
         }
+        
         public function deleteUsuario(){
             $sql = "DELETE FROM users WHERE id = ?";
             $params = array($this->id);
