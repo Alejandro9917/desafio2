@@ -1,18 +1,14 @@
 <?php 
-    //Vars
-    $title='Productos'; 
+    include_once 'core/Routing.php';
+    include_once 'controllers/productsController.php';
+    include_once 'controllers/loginController.php';
+
+    $router = new Routing();
+
+    echo $router->controller;
+    echo $router->method;
+    echo $router->param;
+    
+    $controller = new $router->controller();
+    //$controller->$router->method();
 ?>
-
-<?php require("resources/templates/header-template.php"); ?>
-
-    <?php require("resources/templates/dashboardHeader-template.php");?>
-
-        <?php require("resources/templates/addFormHeader-template.php"); ?>
-            <?php require("resources/components/formProduct-component.php"); ?>
-        <?php require("resources/templates/addFormFooter-template.php"); ?>
-        
-        <?php require("resources/components/productList-component.php");?>
-        
-    <?php require("resources/templates/dashboardFooter-template.php");?>
-
-<?php require("resources/templates/footer-template.php");?>

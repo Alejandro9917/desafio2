@@ -1,4 +1,8 @@
 <?php
+    require_once '../admin/helpers/Validator.php';
+
+    require_once 'Database.php';
+
     class Products extends Validator{
         private $id = null;
         private $name = null;

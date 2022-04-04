@@ -5,7 +5,7 @@
         private static $id = null;
         private static $error = null;
 
-        private function connect(){
+        private static function connect(){
             $server = "localhost";
             $database = "e-shop";
             $username = "root";
@@ -17,7 +17,7 @@
             }
         }
         
-        private function desconnect(){
+        private static function desconnect(){
             self::$error = self::$statement->errorInfo();
             self::$connection = null;
         }
