@@ -137,14 +137,19 @@
 
         public function logOut(){
             //return session_destroy();
-            unset($_SESSION['user']);
+            //unset($_SESSION['user']);
             return true;
+        }
+
+        public function login($user){
+            $sql = "SELECT id, user, name, email FROM users WHERE email = :email and password = :password";
+            $params = $user;
+            return Database::getRow($sql, $params);
         }
 
         public function getUsuarios(){
             $sql = "SELECT id, user, name, email, password, token, id_role FROM users ";
-            $params = array(null);
-            return Database::getRows($sql, $params);
+            return Database::getRows($sql);
         }
 
         public function createUsuario(){

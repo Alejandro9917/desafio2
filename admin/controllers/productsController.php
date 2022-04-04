@@ -1,18 +1,17 @@
 <?php 
     require_once '../admin/models/Products.php';
+    require_once 'Controller.php';
     
-    class productsController
+    class productsController extends Controller
     {
-        function __construct()
-        {
-            $model = new Products();
-            var_dump($model->readProducts());
+        private $model;
+        function __construct(){
+            $this->model = new Products();
         }
 
         public function index()
         {
-            $model = new Products();
-            var_dump($model->readProducts());
+            $this->render("products.php");
         }
     }
 ?>

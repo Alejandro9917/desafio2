@@ -1,14 +1,14 @@
 <?php 
     include_once 'core/Routing.php';
     include_once 'controllers/productsController.php';
-    include_once 'controllers/loginController.php';
+    include_once 'controllers/usersController.php';
 
     $router = new Routing();
-
-    echo $router->controller;
-    echo $router->method;
-    echo $router->param;
     
-    $controller = new $router->controller();
-    //$controller->$router->method();
+    $controller = $router->controller;
+    $method = $router->method;
+    $param = $router->param;
+
+    $controller = new $controller;
+    $controller->$method($param)
 ?>

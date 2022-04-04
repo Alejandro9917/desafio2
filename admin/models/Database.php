@@ -31,7 +31,7 @@
             return $state;
         }
 
-        public static function getRow($query, $values){
+        public static function getRow($query, $values=array()){
             self::connect();
             self::$statement = self::$connection->prepare($query);
             self::$statement->execute($values);
@@ -39,7 +39,7 @@
             return self::$statement->fetch();
         }
 
-        public static function getRows($query, $values){
+        public static function getRows($query, $values=array()){
             self::connect();
             self::$statement = self::$connection->prepare($query);
             self::$statement->execute($values);
