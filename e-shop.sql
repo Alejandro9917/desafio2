@@ -60,6 +60,7 @@ CREATE TABLE `customers` (
 CREATE TABLE `products` (
   `id` char(9) NOT NULL,
   `name` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `stock` int(5) NOT NULL,
   `min_stock` int(3) NOT NULL,
   `price` double(6,2) NOT NULL,
@@ -213,6 +214,17 @@ ALTER TABLE `sales detail`
 COMMIT;
 
 INSERT INTO `users`(`user`, `name`, `email`, `password`, `id_role`) VALUES ('admin','admin','admin@lis.com','202cb962ac59075b964b07152d234b70','1');
+
+INSERT INTO `categories`(`name`) VALUES ('Seda');
+INSERT INTO `categories`(`name`) VALUES ('Lino');
+INSERT INTO `categories`(`name`) VALUES ('Poliester');
+
+INSERT INTO `products`(`name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('Tela blanca','Descripción de tela blanca','10','0','14.25','1','https://i.imgur.com/Tk6jN3F.jpg');
+INSERT INTO `products`(`name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('Tela roja','Descripción de tela roja','10','0','14.25','2','https://i.imgur.com/Tk6jN3F.jpg');
+INSERT INTO `products`(`name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('Tela negra','Descripción de tela negra','10','0','14.25','3','https://i.imgur.com/5syy0Hy.jpg');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
