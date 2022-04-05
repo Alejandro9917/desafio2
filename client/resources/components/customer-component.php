@@ -39,7 +39,7 @@
                     <div class="row mt-2 mb-2 justify-content-center">
                         <div class="col-4 mt-2">
                             <div class="row">
-                                <button class="btn btn-block btn-primary">Agregar nuevo cliente</button>
+                                <button id="btnCreateCustomer" class="btn btn-block btn-primary">Agregar nuevo cliente</button>
                             </div>
                         </div>
                     </div>
@@ -48,3 +48,5 @@
         </div>
     </div>
 </div>
+<script src="./controllers/js/customers/center-controller.js"></script>
+<script src="./controllers/js/customers/create-controller.js"></script>

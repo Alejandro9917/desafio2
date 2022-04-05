@@ -1,6 +1,4 @@
 <?php
-    require_once '../admin/helpers/Validator.php';
-    require_once 'Database.php';
 
     class Products extends Validator{
         private $id = null;
@@ -81,7 +79,7 @@
         }
 
         public function readProducts(){
-            $sql = "SELECT name, id, image, stock, min_stock, price, id_category FROM products";
+            $sql = "SELECT P.name, P.id, P.name AS nameProduct, P.price, P.image, P.stock, C.name AS nameCategory, P.id_category FROM products AS P INNER JOIN categories AS C ON C.id = P.id_category;";
             $params = array();
             return Database::getRows($sql, $params);
         }

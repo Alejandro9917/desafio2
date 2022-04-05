@@ -1,8 +1,4 @@
 <?php
-    require_once '../admin/helpers/Validator.php';
-
-    require_once 'Database.php';
-    
     class Customers extends Validator{
         private $id = null;
         private $name = null;
@@ -95,6 +91,18 @@
             $sql = "SELECT name, telephone, email, password, address FROM customers WHERE id = ?";
             $params = array($this->id);
             return Database::getRows($sql, $params);
+        }
+
+        public function checkPassword(){
+            $sql = "SELECT id, password, address FROM customers WHERE email = ?";
+            $params = array($this->email);
+            $data = Database::getRow($sql, $params);
+            if(password_verify($this->password,$data['password'])){
+                $_SESSION['idCustomer'] = $data['id'];
+                return array('status' => true, 'idCustomer' => $data['id']);
+            }else{
+                return array('status' => false);
+            }
         }
 
         public function createCustomer(){

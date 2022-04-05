@@ -11,14 +11,8 @@
                 <th scope="col">Subtotal</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr class="align-middle">
-                    <th scope="row"><img class="img-cart" src="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" alt=""></th>
-                    <td>Computador</td>
-                    <td>2</td>
-                    <td>$500.00</td>
-                    <td>$1000.00</td>
-                </tr>
+            <tbody id="table-cart">
+                
             </tbody>
             </table>
         </div>
@@ -29,7 +23,7 @@
                 <div class="card-body">
                     <div class="container">
                         <div class="row mt-3 mb-3">
-                            <h4>TOTAL <span>$1000.00</span></h4>
+                            <h4>TOTAL <span id="total">$1000.00</span></h4>
                             <a href="./credit-card.php" class="btn btn-block btn-success btn-cart">Terminar compra</a>
                         </div>
                     </div>
@@ -38,3 +32,4 @@
         </div>
     </div>
 </div>
+<script src="./controllers/js/cart/read-controller.js"></script>
