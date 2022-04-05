@@ -28,24 +28,6 @@
             return $this->name;
         }
 
-        public function createCategory($values){
-            $sql = "INSERT INTO categories(name) VALUES (:name)";
-            $params = $values;
-            return Database::executeRow($sql, $params);
-        }
-
-        public function updateCategory () {
-            $sql = "UPDATE categories SET name = ? WHERE id = ?";
-            $params = array($this->name, $this->id);
-            return Database::executeRow($sql, $params);
-        }
-
-        public function deleteCategory($values){
-            $sql = "DELETE FROM categories WHERE id = :id";
-            $params = $values;
-            return Database::executeRow($sql, $params);
-        }
-
         public function readCategoryForId(){
             $sql = "SELECT name, timestamp FROM categories WHERE id = ?";
             $params = array($this->id);
