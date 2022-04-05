@@ -42,6 +42,10 @@ class Validator{
 		}
 	}
 
+	function isId($var){
+		return preg_match('/^PROD[0-9]{5}$/', $var);
+	}
+
 	//Validamos que sea un codigo de tipo byte
 	public function validateVisibilidad($value){
 		if($value == 0 || $value == 1|| $value == 2){

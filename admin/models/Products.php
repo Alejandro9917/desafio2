@@ -82,8 +82,8 @@
         }
 
         public function readProducts(){
-            $sql = "SELECT P.name, stock, min_stock, price, id_category, C.name FROM products AS P INNER JOIN categories AS C ON C.id = P.id_category";
-            $params = array(null);
+            $sql = "SELECT name, id, image, stock, min_stock, price, id_category FROM products";
+            $params = array();
             return Database::getRows($sql, $params);
         }
 
@@ -105,9 +105,10 @@
             return Database::getRows($sql, $params);
         }
 
-        public function createCategory(){
-            $sql ="INSERT INTO products(name, stock, min_stock, price, id_category) VALUES (?,?,?,?,?)";
-            $params = array($this->name,$this->stock,$this->minStock,$this->price,$this->idCategory);
+        public function createProduct($values){
+            $sql = "INSERT INTO products(id, name, stock, min_stock, price, image, id_category) 
+                    VALUES (:id, :name, :stock, :min_stock, :price, :image, :id_category)";
+            $params = $values;
             return Database::executeRow($sql, $params);
         }
 
@@ -117,9 +118,9 @@
             return Database::executeRow($sql, $params);
         }
 
-        public function deleteCategory(){
-            $sql ="DELETE FROM products WHERE id = ?";
-            $params = array($this->id);
+        public function deleteProduct($values){
+            $sql ="DELETE FROM products WHERE id = :id";
+            $params = $values;
             return Database::executeRow($sql, $params);
         }
         

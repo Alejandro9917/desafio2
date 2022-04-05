@@ -1,6 +1,11 @@
 <div>
     <div class="mt-5 md:mt-0 md:col-span-2">
-        <form action="controllers/addProduct.php" method="POST">
+        <form action="/desafio2/admin/products/store" method="POST">
+        <?php 
+          if(isset($errors)){
+            var_dump($errors);
+          }
+        ?>
         <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div class="grid grid-cols-6 gap-6">
@@ -25,10 +30,8 @@
                     </div>
                 </div>
                 <div class="col-span-6 sm:col-span-3">
-                    <label for="category" class="block text-sm font-medium text-gray-700">Categoría</label>
-                    <select id="category" name="category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <option>Textil</option>
-                    <option>Promocional</option>
+                    <label for="id_category" class="block text-sm font-medium text-gray-700">Categoría</label>
+                    <select id="id_category" name="id_category" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                     </select>
                 </div>
                 <div class="grid grid-cols-6 gap-6">
@@ -63,3 +66,29 @@
         </form>
     </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    getCategories();
+  });
+  
+  //Función para obtener los datos de los tags
+  function getCategories(){
+    $.ajax({
+      url: "/desafio2/admin/categories/getCategories",
+      method: "GET"
+    }).done(function(res){
+      var response = res;
+      printCategories(response);
+    });
+  }
+
+  //Función para pintar las tarjetas con los datos
+  function printCategories(categories){
+    categories.map(function(category){
+      $("#id_category").append(
+        "<option value='" + category.id + "'>" + category.name + "</option>"
+      );
+    });
+  }
+</script>

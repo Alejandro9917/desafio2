@@ -1,4 +1,8 @@
 <?php
+    require_once '../admin/helpers/Validator.php';
+
+    require_once 'Database.php';
+    
     class Customers extends Validator{
         private $id = null;
         private $name = null;
@@ -82,8 +86,8 @@
         }
 
         public function readCustomers(){
-            $sql = "SELECT id, name, telephone, email, password, address FROM customers";
-            $params = array(null);
+            $sql = "SELECT id, name, telephone, email, password, address, state FROM customers";
+            $params = array();
             return Database::getRows($sql, $params);
         }
 

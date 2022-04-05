@@ -10,11 +10,16 @@
         }
 
         public function index(){
-            var_dump($this->model->getUsuarios());
+            $this->render("users.php");
         }
 
         public function login(){
             $this->render("login.php");
+        }
+
+        public function getUsers(){
+            header('Content-type: application/json');
+            echo json_encode($this->model->getUsuarios());
         }
 
         public function validateLogin(){
@@ -34,6 +39,12 @@
             else{
                 echo "<script>location.replace('/desafio2/admin/users/login/');</script>";
             }
+        }
+
+        public function logout(){
+            $_SESSION['user'] = null;
+            unset($_SESSION['user']);
+            echo "<script>location.replace('/desafio2/admin/users/login/');</script>";
         }
     }
 ?>
