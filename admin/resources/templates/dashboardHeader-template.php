@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <div class="min-h-full">
   <nav class="bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -9,15 +10,15 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="http://localhost/desafio2/admin/index" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" >Productos</a>
+              <a href="/desafio2/admin/products/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Productos</a>
 
-              <a href="http://localhost/desafio2/admin/categories" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categorías</a>
+              <a href="/desafio2/admin/categories/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Categorías</a>
 
-              <a href="http://localhost/desafio2/admin/customers" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
+              <a href="/desafio2/admin/customers/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Clientes</a>
 
-              <a href="http://localhost/desafio2/admin/sales" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</a>
+              <a href="/desafio2/admin/sales/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Ventas</a>
 
-              <a href="http://localhost/desafio2/admin/users" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Usuarios</a>
+              <a href="/desafio2/admin/users/" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Usuarios</a>
             </div>
           </div>
         </div>
@@ -25,9 +26,9 @@
           <div class="ml-4 flex items-center md:ml-6">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <p class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Bienvenido </p>
+              <p class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">Bienvenido <?php echo $_SESSION['user']['name']; ?></p>
 
-              <a href="http://localhost/desafio2/admin/auth/logout" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sing out</a>
+              <a href="/desafio2/admin/users/logout" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sing out</a>
             </div>
           </div>
         </div>

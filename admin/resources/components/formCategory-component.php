@@ -1,6 +1,6 @@
 <div>
     <div class="mt-5 md:mt-0 md:col-span-2">
-        <form action="controllers/addProduct.php" method="POST">
+        <form action="/desafio2/admin/categories/store/" method="POST">
         <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div class="grid grid-cols-6 gap-6">
@@ -9,12 +9,6 @@
                         <input type="text" name="name" id="name" 
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                         placeholder="Nombre de la categoría">
-                    </div>
-                    <div class="col-span-6 sm:col-span-3">
-                        <label for="id" class="block text-sm font-medium text-gray-700">Fecha categoría</label>
-                        <input type="text" name="id" id="id" 
-                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                        placeholder="11/Feb/2022">
                     </div>
                 </div>
             </div>

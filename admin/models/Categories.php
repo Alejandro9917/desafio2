@@ -1,4 +1,8 @@
 <?php
+    require_once '../admin/helpers/Validator.php';
+
+    require_once 'Database.php';
+
     class Categories extends Validator{
         private $id = null;
         private $name = null;
@@ -25,9 +29,9 @@
             return $this->name;
         }
 
-        public function createCategory(){
-            $sql = "INSERT INTO categories(name) VALUES (?)";
-            $params = array($this->name);
+        public function createCategory($values){
+            $sql = "INSERT INTO categories(name) VALUES (:name)";
+            $params = $values;
             return Database::executeRow($sql, $params);
         }
 
@@ -37,9 +41,9 @@
             return Database::executeRow($sql, $params);
         }
 
-        public function deleteCategory(){
-            $sql = "DELETE FROM categories WHERE id = ?";
-            $params = array($this->id);
+        public function deleteCategory($values){
+            $sql = "DELETE FROM categories WHERE id = :id";
+            $params = $values;
             return Database::executeRow($sql, $params);
         }
 
@@ -51,7 +55,7 @@
 
         public function readCategories(){
             $sql = "SELECT id, name, timestamp FROM categories";
-            $params = array(null);
+            $params = array();
             return Database::getRows($sql, $params);
         }
     }

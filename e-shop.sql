@@ -47,7 +47,8 @@ CREATE TABLE `customers` (
   `telephone` varchar(9) COLLATE utf8_spanish_ci NOT NULL,
   `email` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `address` varchar(255) COLLATE utf8_spanish_ci NOT NULL
+  `address` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
+  `state` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -57,12 +58,13 @@ CREATE TABLE `customers` (
 --
 
 CREATE TABLE `products` (
-  `id` int(11) NOT NULL,
+  `id` char(9) NOT NULL,
   `name` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `stock` int(5) NOT NULL,
   `min_stock` int(3) NOT NULL,
   `price` double(6,2) NOT NULL,
-  `id_category` int(11) NOT NULL
+  `id_category` int(11) NOT NULL,
+  `image` varchar(200) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -88,7 +90,7 @@ CREATE TABLE `sales` (
 CREATE TABLE `sales detail` (
   `id` int(11) NOT NULL,
   `id_sale` int(11) NOT NULL,
-  `id_product` int(11) NOT NULL
+  `id_product` char(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -169,12 +171,6 @@ ALTER TABLE `customers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `products`
---
-ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `sales`
 --
 ALTER TABLE `sales`
@@ -215,6 +211,8 @@ ALTER TABLE `sales detail`
   ADD CONSTRAINT `sales detail_ibfk_1` FOREIGN KEY (`id_sale`) REFERENCES `sales` (`id`),
   ADD CONSTRAINT `sales detail_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 COMMIT;
+
+INSERT INTO `users`(`user`, `name`, `email`, `password`, `id_role`) VALUES ('admin','admin','admin@lis.com','202cb962ac59075b964b07152d234b70','1');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

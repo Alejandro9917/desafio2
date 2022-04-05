@@ -1,1 +1,1 @@
-<?php header('location: client/index.php') ?>
+Hola mundo
