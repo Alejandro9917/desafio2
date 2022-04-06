@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("#btnEndShop").click(()=> { 
-        createReport();
+        // createReport();
+        createSale();
     });
 });

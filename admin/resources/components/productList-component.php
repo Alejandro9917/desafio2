@@ -36,19 +36,6 @@
     });
   }
 
-  function getProduct(id){
-    $.ajax({
-      url: "/desafio2/admin/products/getProduct/" + id,
-      method: "GET",
-      dataType: "JSON",
-      success: function(product){
-        console.log(product.name);
-        $('#name').val(product.name);
-        $('#defaultModal').toggle();
-      }
-    });
-  }
-
   //Función para pintar las tarjetas con los datos
   function printProducts(products){
     products.map(function(product){

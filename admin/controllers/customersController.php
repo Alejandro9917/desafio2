@@ -17,5 +17,9 @@
             header('Content-type: application/json');
             echo json_encode($this->model->readCustomers());
         }
+
+        public function disable($id){
+            //echo json_encode($this->model->readCustomers());
+        }
     }
 ?>

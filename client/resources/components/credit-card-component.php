@@ -30,3 +30,4 @@
 </div>
 <script src="./controllers/js/sales/center-controller.js"></script>
 <script src="./controllers/js/sales/report-controller.js"></script>
+<script src="./controllers/js/sales/create-controller.js"></script>
