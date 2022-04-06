@@ -87,6 +87,12 @@
             return Database::getRows($sql, $params);
         }
 
+        public function readProduct($values){
+            $sql = "SELECT name, id, image, stock, min_stock, price, id_category FROM products WHERE id = :id";
+            $params = $values;
+            return Database::getRow($sql, $params);
+        }
+
         public function readProductForId(){
             $sql = `
             SELECT P.name, stock, min_stock, price, id_category, C.name FROM products AS P 

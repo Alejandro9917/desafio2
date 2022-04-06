@@ -4,6 +4,7 @@
     include_once 'controllers/usersController.php';
     include_once 'controllers/categoriesController.php';
     include_once 'controllers/customersController.php';
+    include_once 'controllers/salesController.php';
 
     $router = new Routing();
     

@@ -36,6 +36,19 @@
     });
   }
 
+  function getProduct(id){
+    $.ajax({
+      url: "/desafio2/admin/products/getProduct/" + id,
+      method: "GET",
+      dataType: "JSON",
+      success: function(product){
+        console.log(product.name);
+        $('#name').val(product.name);
+        $('#defaultModal').toggle();
+      }
+    });
+  }
+
   //Función para pintar las tarjetas con los datos
   function printProducts(products){
     products.map(function(product){
@@ -54,7 +67,9 @@
           "<td class='px-6 py-4 whitespace-nowrap'><div class='flex items-center'><div class='ml-4'>" +
             "<div class='text-sm font-medium text-gray-900'>" + product.stock + "</div>" +
           "</div></div></td>" +
-          "<td class='px-6 py-4 whitespace-nowrap'><a href='/desafio2/admin/products/delete/" + product.id + "' class='text-red-600 hover:text-red-900'>Delete</a></td>" +
+          "<td class='px-6 py-4 whitespace-nowrap'>"+
+          "<a href='/desafio2/admin/products/delete/" + product.id + "' class='text-red-600 hover:text-red-900'>Delete</a>" +
+          "</td>" +
         "</tr>"
       );
     });

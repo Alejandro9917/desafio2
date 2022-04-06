@@ -88,7 +88,7 @@ CREATE TABLE `sales` (
 -- Estructura de tabla para la tabla `sales detail`
 --
 
-CREATE TABLE `sales detail` (
+CREATE TABLE `sales_detail` (
   `id` int(11) NOT NULL,
   `id_sale` int(11) NOT NULL,
   `id_product` char(9) NOT NULL
@@ -144,7 +144,7 @@ ALTER TABLE `sales`
 --
 -- Indices de la tabla `sales detail`
 --
-ALTER TABLE `sales detail`
+ALTER TABLE `sales_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_sale` (`id_sale`),
   ADD KEY `id_product` (`id_product`);
@@ -180,7 +180,7 @@ ALTER TABLE `sales`
 --
 -- AUTO_INCREMENT de la tabla `sales detail`
 --
-ALTER TABLE `sales detail`
+ALTER TABLE `sales_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -208,7 +208,7 @@ ALTER TABLE `sales`
 --
 -- Filtros para la tabla `sales detail`
 --
-ALTER TABLE `sales detail`
+ALTER TABLE `sales_detail`
   ADD CONSTRAINT `sales detail_ibfk_1` FOREIGN KEY (`id_sale`) REFERENCES `sales` (`id`),
   ADD CONSTRAINT `sales detail_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 COMMIT;
@@ -219,12 +219,10 @@ INSERT INTO `categories`(`name`) VALUES ('Seda');
 INSERT INTO `categories`(`name`) VALUES ('Lino');
 INSERT INTO `categories`(`name`) VALUES ('Poliester');
 
-INSERT INTO `products`(`name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
-VALUES ('Tela blanca','Descripción de tela blanca','10','0','14.25','1','https://i.imgur.com/Tk6jN3F.jpg');
-INSERT INTO `products`(`name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
-VALUES ('Tela roja','Descripción de tela roja','10','0','14.25','2','https://i.imgur.com/Tk6jN3F.jpg');
-INSERT INTO `products`(`name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
-VALUES ('Tela negra','Descripción de tela negra','10','0','14.25','3','https://i.imgur.com/5syy0Hy.jpg');
+INSERT INTO `products`(`id`, `name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('PROD00001', 'Tela blanca','Descripción de tela blanca','10','0','14.25','1','https://i.imgur.com/Tk6jN3F.jpg');
+INSERT INTO `products`(`id`, `name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('PROD00002', 'Tela roja','Descripción de tela roja','10','0','13.99','2','https://i.imgur.com/Tk6jN3F.jp');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

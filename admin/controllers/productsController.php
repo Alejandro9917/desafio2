@@ -18,6 +18,12 @@
             echo json_encode($this->model->readProducts());
         }
 
+        public function getProduct($id){
+            header('Content-type: application/json');
+            $product = [':id' => $id];
+            echo json_encode($this->model->readProducts($product));
+        }
+
         public function store(){
             $form = $this->model->validateForm($_POST);
 
@@ -28,7 +34,7 @@
             if(!$this->model->isId($form['id'])){array_push($errors, "El id no cumple con el formato");}
 
             if(count($errors) == 0){
-                $category = [
+                $product = [
                     ':id' => $form['id'],
                     ':name' => $form['name'],
                     ':stock' => $form['stock'],
@@ -37,7 +43,7 @@
                     ':image' => $form['image'],
                     ':id_category' => $form['id_category'],
                 ];
-                $data = $this->model->createProduct($category);
+                $data = $this->model->createProduct($product);
                 echo "<script>location.replace('/desafio2/admin/products/');</script>";
             }
             else{
