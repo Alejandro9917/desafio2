@@ -60,6 +60,7 @@ CREATE TABLE `customers` (
 CREATE TABLE `products` (
   `id` char(9) NOT NULL,
   `name` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
+  `description` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `stock` int(5) NOT NULL,
   `min_stock` int(3) NOT NULL,
   `price` double(6,2) NOT NULL,
@@ -87,7 +88,7 @@ CREATE TABLE `sales` (
 -- Estructura de tabla para la tabla `sales detail`
 --
 
-CREATE TABLE `sales detail` (
+CREATE TABLE `sales_detail` (
   `id` int(11) NOT NULL,
   `id_sale` int(11) NOT NULL,
   `id_product` char(9) NOT NULL
@@ -143,7 +144,7 @@ ALTER TABLE `sales`
 --
 -- Indices de la tabla `sales detail`
 --
-ALTER TABLE `sales detail`
+ALTER TABLE `sales_detail`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_sale` (`id_sale`),
   ADD KEY `id_product` (`id_product`);
@@ -179,7 +180,7 @@ ALTER TABLE `sales`
 --
 -- AUTO_INCREMENT de la tabla `sales detail`
 --
-ALTER TABLE `sales detail`
+ALTER TABLE `sales_detail`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -207,12 +208,21 @@ ALTER TABLE `sales`
 --
 -- Filtros para la tabla `sales detail`
 --
-ALTER TABLE `sales detail`
+ALTER TABLE `sales_detail`
   ADD CONSTRAINT `sales detail_ibfk_1` FOREIGN KEY (`id_sale`) REFERENCES `sales` (`id`),
   ADD CONSTRAINT `sales detail_ibfk_2` FOREIGN KEY (`id_product`) REFERENCES `products` (`id`);
 COMMIT;
 
 INSERT INTO `users`(`user`, `name`, `email`, `password`, `id_role`) VALUES ('admin','admin','admin@lis.com','202cb962ac59075b964b07152d234b70','1');
+
+INSERT INTO `categories`(`name`) VALUES ('Seda');
+INSERT INTO `categories`(`name`) VALUES ('Lino');
+INSERT INTO `categories`(`name`) VALUES ('Poliester');
+
+INSERT INTO `products`(`id`, `name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('PROD00001', 'Tela blanca','Descripción de tela blanca','10','0','14.25','1','https://i.imgur.com/Tk6jN3F.jpg');
+INSERT INTO `products`(`id`, `name`, `description`, `stock`, `min_stock`, `price`, `id_category`, `image`) 
+VALUES ('PROD00002', 'Tela roja','Descripción de tela roja','10','0','13.99','2','https://i.imgur.com/Tk6jN3F.jp');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

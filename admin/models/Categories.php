@@ -1,6 +1,5 @@
 <?php
     require_once '../admin/helpers/Validator.php';
-
     require_once 'Database.php';
 
     class Categories extends Validator{
