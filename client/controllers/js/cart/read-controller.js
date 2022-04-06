@@ -5,14 +5,33 @@ $(document).ready(function () {
         dataType: "json",
         success: function (res) {
             if(!res[0]){
-                swal("Error", "Tienes que iniciar sesión para finalizar el proceso de compra", "error");
+                swal("Error", "No tienes productos en tu carrito", "error");
                 setTimeout(()=>{
-                    location.href = './login.php';
+                    location.href = './index.php';
                 },3000);                
             }else{
                 readCart(res);
             }
         }
+    });
+
+    $("#btn-cart").click(()=>{
+        $.ajax({
+            type: "GET",
+            url: "./controllers/php/auth/read-controller.php",
+            dataType: "json",
+            success: function (res) {
+                console.log(res);
+                if(!res[0]){
+                    swal("Error", "No puedes finalizar el proceso de compra si no has iniciado sesión", "error");
+                    setTimeout(()=>{
+                        location.href = './login.php';
+                    },3000);                
+                }else{
+                    location.href = './credit-card.php';
+                }
+            }
+        });
     });
 });
 
@@ -41,6 +60,6 @@ const readCart = async (array) =>{
             </tr>
         `);
     });
-    $("#total").text((total.toFixed(2)));
+    $("#total").text('$'+(total.toFixed(2)));
 
 };

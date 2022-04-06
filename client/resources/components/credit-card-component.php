@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="row mt-4 mb-2">
-                            <button class="btn btn-block btn-primary">Finalizar</button>
+                            <button class="btn btn-block btn-primary" id="btnEndShop">Finalizar</button>
                         </div>
                     </div>
                 </div>
@@ -28,3 +28,5 @@
         </div>
     </div>
 </div>
+<script src="./controllers/js/sales/center-controller.js"></script>
+<script src="./controllers/js/sales/report-controller.js"></script>

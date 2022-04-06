@@ -98,6 +98,7 @@
             $params = array($this->email);
             $data = Database::getRow($sql, $params);
             if(password_verify($this->password,$data['password'])){
+                session_start();
                 $_SESSION['idCustomer'] = $data['id'];
                 return array('status' => true, 'idCustomer' => $data['id']);
             }else{

@@ -23,8 +23,8 @@
                 <div class="card-body">
                     <div class="container">
                         <div class="row mt-3 mb-3">
-                            <h4>TOTAL <span id="total">$1000.00</span></h4>
-                            <a href="./credit-card.php" class="btn btn-block btn-success btn-cart">Terminar compra</a>
+                            <h4>TOTAL <span id="total"></span></h4>
+                            <hutton id="btn-cart" class="btn btn-block btn-success btn-cart">Terminar compra</button>
                         </div>
                     </div>
                 </div>
