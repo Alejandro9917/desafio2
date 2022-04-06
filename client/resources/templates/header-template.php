@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.css">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    <script src="./controllers/js/core/auth-controller.js"></script>
   </head>
   <body>
     <div class="container">
@@ -20,9 +20,9 @@
           <span class="fs-4">E-Shop</span>
         </a>
 
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills" id="nav">
           <li class="nav-item"><a href="./index.php" class="nav-link" aria-current="page">Inicio</a></li>
-          <li class="nav-item"><a href="./login.php" class="nav-link" aria-current="page">Iniciar Sesión</a></li>
+          <li id="startSession" class="nav-item"><a href="./login.php" class="nav-link" aria-current="page">Iniciar Sesión</a></li>
           <li class="nav-item"><a href="./cart.php" class="nav-link">Carrito</a></li>
         </ul>
       </header>

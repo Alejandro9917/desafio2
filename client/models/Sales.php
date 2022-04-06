@@ -1,6 +1,4 @@
 <?php
-    require_once '../admin/helpers/Validator.php';
-    require_once 'Database.php';
 
     class Sales extends Validator{
         private $id = null;
@@ -9,6 +7,7 @@
         private $idProduct = null;
         private $date = null;
         private $status = null;
+        private $amount = null;
         
 
         public function setId($value){
@@ -18,6 +17,15 @@
 
         public function getId(){
             return $this->id;
+        }
+
+        public function setAmount($value){
+            $this->amount = $value;
+            return true;
+        }
+
+        public function getAmount(){
+            return $this->amount;
         }
 
         public function setIdCustomer($value){
@@ -66,25 +74,27 @@
         }
 
         public function createSale(){
-            $sql = "INSERT INTO sales(date, status, id_customer) VALUES (?,?,?,?)";
+            $sql = "INSERT INTO sales(date, status, id_customer) VALUES (?,?,?)";
             $params = array($this->date, $this->status, $this->idCustomer);
-            return Database::executeRow($sql, $params);
+            Database::executeRow($sql, $params);
+            return Database::getLastRowId();
+            
         }
 
         public function createSalesDetail(){
-            $sql = "INSERT INTO sales_detail (id_sale, id_product) VALUES (?,?)";
-            $params = array($this->date, $this->status, $this->idCustomer, $this->idDetail);
+            $sql = "INSERT INTO sales_details (id_sale, id_product, amount) VALUES (?,?,?)";
+            $params = array($this->id, $this->idProduct, $this->amount);
             return Database::executeRow($sql, $params);
         }
 
         public function deleteSaleDetail(){
-            $sql = 'DELETE FROM sales_detail WHERE id = ?';
+            $sql = 'DELETE FROM sales_details WHERE id = ?';
             $params = array($this->idDetail);
         }
 
         public function readDetailSale(){
             $sql = 'SELECT P.name AS name,  COUNT(P.name) AS count , P.price, C.name, P.image
-            FROM sales AS S INNER JOIN sales_detail AS DT ON S.id = DT.id_sale 
+            FROM sales AS S INNER JOIN sales_details AS DT ON S.id = DT.id_sale 
             INNER JOIN products AS P ON P.id = DT.id_product
             INNER JOIN categories AS C ON C.id = P.id_category WHERE id_customer = ?';
             $params = array($this->idCustomer);
